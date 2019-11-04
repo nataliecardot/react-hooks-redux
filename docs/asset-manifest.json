@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/react-hooks-redux/static/css/main.03590305.chunk.css",
+    "main.js": "/react-hooks-redux/static/js/main.fc322d80.chunk.js",
+    "main.js.map": "/react-hooks-redux/static/js/main.fc322d80.chunk.js.map",
+    "runtime-main.js": "/react-hooks-redux/static/js/runtime-main.568b593e.js",
+    "runtime-main.js.map": "/react-hooks-redux/static/js/runtime-main.568b593e.js.map",
+    "static/js/2.42d579ab.chunk.js": "/react-hooks-redux/static/js/2.42d579ab.chunk.js",
+    "static/js/2.42d579ab.chunk.js.map": "/react-hooks-redux/static/js/2.42d579ab.chunk.js.map",
+    "index.html": "/react-hooks-redux/index.html",
+    "precache-manifest.478933f57e204b9dd8531f09073e2436.js": "/react-hooks-redux/precache-manifest.478933f57e204b9dd8531f09073e2436.js",
+    "service-worker.js": "/react-hooks-redux/service-worker.js",
+    "static/css/main.03590305.chunk.css.map": "/react-hooks-redux/static/css/main.03590305.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.568b593e.js",
+    "static/js/2.42d579ab.chunk.js",
+    "static/css/main.03590305.chunk.css",
+    "static/js/main.fc322d80.chunk.js"
+  ]
+}
