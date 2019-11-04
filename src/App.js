@@ -23,7 +23,16 @@ function counterReducer(state = { count: 0 }, action) {
 }
 
 function nameReducer(state = { name: '' }, action) {
-  return state;
+  switch (action.type) {
+    case 'UPDATE_NAME':
+      return {
+        ...state,
+        name: action.payload
+      }
+
+    default:
+      return state;
+  }
 }
 
 const rootReducer = combineReducers({
@@ -31,9 +40,7 @@ const rootReducer = combineReducers({
   nameReducer
 });
 
-const INITIAL_STATE = {
-
-}
+const INITIAL_STATE = { };
 
 // Takes a reducer function that takes care of reducing state, i.e., taking our state value as well as an action that's used to update our state, and reducing it to a single value. The first argument is the reducer, and the second argument is the initial state. If we had Redux middleware like Redux Thunk, if we were dealing with asynchronous actions, we'd pass it as an optional third argument
 const store = createStore(rootReducer, INITIAL_STATE);
@@ -44,6 +51,7 @@ function App() {
     // Provider makes store available to all of our components within the component tree
     <Provider store={store}>
       <Counter />
+      <Name />
     </Provider>
   );
 }
@@ -80,9 +88,18 @@ function Counter() {
 }
 
 function Name() {
+  const dispatch = useDispatch();
+
+  function handleUpdateName(e) {
+    dispatch({
+      type: 'UPDATE_NAME',
+      payload: e.target.value
+    });
+  }
+
   return (
     <div>
-      <input placeholder="Enter your name" />
+      <input type="text" placeholder="Enter your name" onChange={handleUpdateName} />
     </div>
   );
 }
