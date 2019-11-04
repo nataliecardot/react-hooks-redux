@@ -1,7 +1,6 @@
 import React from 'react';
-import './App.css';
 import { createStore } from 'redux';
-import { Provider } from 'react-redux';
+import { Provider, useSelector } from 'react-redux';
 
 function reducer(state, action) {
   return state;
@@ -25,11 +24,16 @@ function App() {
 }
 
 function Counter() {
+  // One of rules of Hooks is you must execute at the top level of the component you want to use it in
+  // useSelector Hook allows you to subscribe to Redux store. Roughly equivalent to mapStateToProps
+  // Have to pass argument to it letting it know what piece of state we want from it
+  const count = useSelector(state => state.count);
+
   return (
     <>
-      <h2>Counter</h2>
+      <p>Counter: {count}</p>
       <button>+</button>
-      <button>-</button>
+      <button class="button-2">−</button>
     </>
   );
 }
