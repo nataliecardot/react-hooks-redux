@@ -1,8 +1,9 @@
 import React from 'react';
-import { createStore } from 'redux';
+import { createStore, combineReducers } from 'redux';
 import { Provider, useSelector, useDispatch } from 'react-redux';
 
-function reducer(state, action) {
+// Using actions disatched to store with useDispatch() hook
+function counterReducer(state = { count: 0 }, action) {
   switch (action.type) {
     case 'INCREMENT_COUNT':
       return {
@@ -21,12 +22,21 @@ function reducer(state, action) {
   }
 }
 
+function nameReducer(state = { name: '' }, action) {
+  return state;
+}
+
+const rootReducer = combineReducers({
+  counterReducer,
+  nameReducer
+});
+
 const INITIAL_STATE = {
-  count: 0
+
 }
 
 // Takes a reducer function that takes care of reducing state, i.e., taking our state value as well as an action that's used to update our state, and reducing it to a single value. The first argument is the reducer, and the second argument is the initial state. If we had Redux middleware like Redux Thunk, if we were dealing with asynchronous actions, we'd pass it as an optional third argument
-const store = createStore(reducer, INITIAL_STATE);
+const store = createStore(rootReducer, INITIAL_STATE);
 
 
 function App() {
@@ -44,7 +54,7 @@ function Counter() {
   // Have to pass argument to it letting it know what piece of state we want from it
   const count = useSelector(state => state.count);
 
-  // When you want to update state with help of an action, we want to dispatch it to our reducer with either or both the type of action we want to be executed on our state and we can also include a payload, a property that holds the actual data in the action object
+  // When you want to update state with help of an action, we want to dispatch it to our reducer with either or both the type of action we want to be executed on our state and we can also include a payload, a property that holds the actual data in the action object (here we're only using type)
   // useDispatch() hook is similar to mapDispatchToProps, which enabled us to dispatch actions to the store. It returns a reference to the dispatch function from the Redux store
   const dispatch = useDispatch();
 
@@ -66,6 +76,14 @@ function Counter() {
       <button onClick={incrementCount}>+</button>
       <button class="button-2" onClick={decrementCount}>−</button>
     </>
+  );
+}
+
+function Name() {
+  return (
+    <div>
+      <input placeholder="Enter your name" />
+    </div>
   );
 }
 
