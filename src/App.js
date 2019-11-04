@@ -60,7 +60,10 @@ function Counter() {
   // One of rules of Hooks is you must execute at the top level of the component you want to use it in
   // useSelector Hook allows you to subscribe to Redux store. Roughly equivalent to mapStateToProps
   // Have to pass argument to it letting it know what piece of state we want from it
-  const count = useSelector(state => state.count);
+  const { count, name } = useSelector(state => ({
+    ...state.counterReducer,
+    ...state.nameReducer
+  }));
 
   // When you want to update state with help of an action, we want to dispatch it to our reducer with either or both the type of action we want to be executed on our state and we can also include a payload, a property that holds the actual data in the action object (here we're only using type)
   // useDispatch() hook is similar to mapDispatchToProps, which enabled us to dispatch actions to the store. It returns a reference to the dispatch function from the Redux store
@@ -82,7 +85,10 @@ function Counter() {
     <>
       <p>Counter: {count}</p>
       <button onClick={incrementCount}>+</button>
-      <button class="button-2" onClick={decrementCount}>−</button>
+      <button className="button-2" onClick={decrementCount}>−</button>
+      <div>
+        <p>Your name is: {name}</p>
+      </div>
     </>
   );
 }
