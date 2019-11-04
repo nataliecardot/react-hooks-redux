@@ -84,8 +84,8 @@ function Counter() {
   return (
     <>
       <p>Counter: {count}</p>
-      <button className="button-2" onClick={decrementCount}>−</button>
-      <button onClick={incrementCount}>+</button>
+      <button onClick={decrementCount}>−</button>
+      <button onClick={incrementCount} className="button-2">+</button>
       <div>
         <p>Your name is: {name}</p>
       </div>
